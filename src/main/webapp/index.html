@@ -1,0 +1,81 @@
+<html xmlns="http://www.w3.org/1999/html">
+	<head>
+		<title>Wave Payroll</title>
+		<script src="resources/js/angular.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
+		<script src="resources/js/file.uploader.js"></script>
+		<script src="resources/js/ui-bootstrap-tpls-2.1.4.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="resources/css/main.css" >
+		<meta http-equiv="X-UA-Compatible" content="IE=11" /> 
+	</head>
+	<body ng-app="selfServiceApp"  style="background-color: white">
+		<form name="fileUploadForm" ng-submit="submit()" ng-controller="fileUploadController">
+			<div align="center" >
+				<div  class="container" style="background-color: white;  height:60%; width: 50%; padding: 8px; " align="left">
+					<header>
+						<img src="resources/css/logo.jpg">
+						<br>
+						<br>
+					</header>
+					<nav>
+						<ul>
+							<li><a href="/wave-payroll">Home</a></li>
+						</ul>
+					</nav>
+					<br>
+					<div align="center" style="border: none; padding: 8px; height:100%;">
+						<article >
+							<h2>Wave Payroll</h2>
+							<br>
+							<div>
+								<table class="tablenoborder" width="100%">
+									<tr>
+										<td><label for="category" class="labelMessage"> Category </label></td>
+										<td>
+											<select ng-model="category" ng-init="category='0'" name="category" onchange="angular.element(this).scope().category_changed()" required >
+												<option value="0">Generate Report</option>
+												<option value="1">View Report</option>
+											</select>
+										</td>
+									</tr>
+									<tr>
+										<td><label  ng-if="category=='0'" for="upload" class="labelMessage"> Upload file </label></td>
+										<td><input  ng-if="category=='0'" type="file" file-model="file" name="file" onchange="angular.element(this).scope().file_changed(this)"/><td>
+									</tr>
+									<tr>
+										<td><label  ng-if="category=='1'" for="report" class="labelMessage"> Report ID </label></td>
+										<td>
+											<input  ng-if="category=='1'" type="text" ng-model="report.reportId" name="report" required />
+											<input type="submit" value="submit" ng-if="category=='1'"/>
+										</td>
+									</tr>
+								</table>
+							</div>
+							
+							<div ng-if="reports.length>0">
+								<div>
+								<h2>Payroll Report</h2>
+								</div>
+								<table class="alternateWithBorder" width="100%">
+									<tr>
+										<th>Employee ID</th>
+										<th>Pay Period</th>
+										<th>Amount</th>
+									</tr>
+									<tr ng-repeat="report in reports" class="alternate" >
+										<td align="center">{{report.employeeId}}</td>
+										<td align="center">{{report.period}}</td>
+										<td align="center">${{report.amount}}</td>
+									</tr>
+								</table>
+							</div>
+							<br>
+							
+							<div class="statusMessage">{{status}}</div>
+						</article>
+					</div>
+				</div>
+			</div>
+		</form>
+	</body>
+</html>
