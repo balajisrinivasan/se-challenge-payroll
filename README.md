@@ -1,3 +1,19 @@
+### Instructions 
+1. Requirements Maven.
+2. Change to cloned directory $ cd se-challenge-payroll
+3. Run command mvn spring-boot:run
+4. Spring boot will start the embedded Tomcat server and deploy the application. Open browser and go to http://localhost:9082/wave-payroll. Application port/context-path can be changed by editing the properties in application.properties file.
+
+## Architecture
+1. Model-View-Controller design pattern is used to separate the different layers in the application.
+2. Tech stack primarily consists of Angular JS on client layer and Spring-enabled REST API services on server side. (For the sake of simplicity, I've integrated Angular web with Spring Boot. Ideally the user interface would be separated from the server and data storage to allow different components to evolve independently).
+3. The application uses H2, an in-memory database. The tables are created and static data are loaded on start up. Hibernate is used for ORM. The database can be swapped with MySQL, Oracle or any other relational database with only config change.
+4. Unit test cases for business logic with mock API using Spring's dependency injection.
+5. Spring's transaction management and Advice are used to handle exceptions.
+
+
+
+
 # Wave Software Development Challenge
 
 Applicants for the [Software
@@ -199,7 +215,8 @@ Please modify `README.md` to add:
 
 1. Instructions on how to build/run your application
 1. A paragraph or two about what you are particularly proud of in your
-   implementation, and why.
+   implementation, and why.   
+
 
 ## Submission Instructions
 
