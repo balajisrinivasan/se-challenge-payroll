@@ -62,7 +62,6 @@ public class PayrollService implements IPayrollService {
 	
 	@Override
 	public List<Report> fetchReport(String reportId) {
-		logger.info("Fetching reports for reportID"+reportId);
 		return reportRepository.findByReportId(reportId);
 	}
 	
