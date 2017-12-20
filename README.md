@@ -1,5 +1,5 @@
 ### Instructions 
-1. Requirements Maven.
+1. Requirements: Maven.
 2. Change to cloned directory $ cd se-challenge-payroll
 3. Run command mvn spring-boot:run
 4. Spring boot will start the embedded Tomcat server and deploy the application. Open browser and go to http://localhost:9082/wave-payroll. Application port/context-path can be changed by editing the properties in application.properties file.
